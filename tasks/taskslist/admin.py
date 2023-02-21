@@ -4,7 +4,6 @@ from .models import Tasks
 
 @admin.register(Tasks)
 class TasksAdmin(admin.ModelAdmin):
-
     list_display = (
         "name",
         "status",

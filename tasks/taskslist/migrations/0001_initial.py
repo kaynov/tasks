@@ -4,24 +4,43 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Tasks',
+            name="Tasks",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Список задач', max_length=100)),
-                ('status', models.BooleanField(default=False, help_text='Статус задачи')),
-                ('start', models.DateTimeField(auto_now_add=True, help_text='Время начала задания')),
-                ('end', models.DateTimeField(blank=True, help_text='Время выполнения задания', null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(help_text="Список задач", max_length=100)),
+                (
+                    "status",
+                    models.BooleanField(default=False, help_text="Статус задачи"),
+                ),
+                (
+                    "start",
+                    models.DateTimeField(
+                        auto_now_add=True, help_text="Время начала задания"
+                    ),
+                ),
+                (
+                    "end",
+                    models.DateTimeField(
+                        blank=True, help_text="Время выполнения задания", null=True
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'Задачи',
+                "verbose_name_plural": "Задачи",
             },
         ),
     ]

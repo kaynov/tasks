@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class TaskslistConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'taskslist'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "taskslist"

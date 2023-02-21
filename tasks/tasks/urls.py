@@ -22,15 +22,15 @@ from taskslist.views import (
     ListViewOffFull,
     TasksCreateView,
     TasksDeleteView,
-    TasksUpdateView
+    TasksUpdateView,
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', ListViewFull.as_view(), name='load'),
-    path('list/on/', ListViewOnFull.as_view(), name='load_on'),
-    path('list/off/', ListViewOffFull.as_view(), name='load_off'),
-    path('add/', TasksCreateView.as_view(), name='add'),
-    path('delete/<int:pk>/', TasksDeleteView.as_view(), name='delete'),
-    path('edit/<int:pk>/', TasksUpdateView.as_view(), name='edit'),
+    path("admin/", admin.site.urls),
+    path("", ListViewFull.as_view(), name="load"),
+    path("list/on/", ListViewOnFull.as_view(), name="load_on"),
+    path("list/off/", ListViewOffFull.as_view(), name="load_off"),
+    path("add/", TasksCreateView.as_view(), name="add"),
+    path("delete/<int:pk>/", TasksDeleteView.as_view(), name="delete"),
+    path("edit/<int:pk>/", TasksUpdateView.as_view(), name="edit"),
 ]
