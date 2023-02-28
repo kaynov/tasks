@@ -6,8 +6,11 @@ from django.views.generic import (
 )
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse_lazy
-
 from .models import Tasks
+from rest_framework import viewsets, mixins
+from rest_framework.schemas.openapi import AutoSchema
+from .serializers import TasksSerializer
+from .filters import TasksFilterSet
 
 
 class ListViewFull(ListView):
@@ -46,3 +49,22 @@ class TasksUpdateView(UpdateView):
     fields = ["name", "status"]
     template_name = "tasks_edit.html"
     success_url = reverse_lazy("load")
+
+
+class TasksViewSet(
+    mixins.ListModelMixin,  # GET /tasks
+    mixins.CreateModelMixin,  # POST /tasks
+    mixins.RetrieveModelMixin,  # GET /articles/1
+    mixins.DestroyModelMixin,  # DELETE /articles/1
+    mixins.UpdateModelMixin,  # PUT /articles/1
+    viewsets.GenericViewSet
+):
+    queryset = Tasks.objects.all().order_by("-id")
+    serializer_class = TasksSerializer
+    filterset_class = TasksFilterSet
+
+    schema = AutoSchema(
+        tags=['TasksList'],
+        component_name='Tasks',
+        operation_id_base='Tasks',
+    )
